@@ -21,28 +21,62 @@ function renderLoadout() {
 
 renderLoadout();
 
-// Add card to loadout
-document.querySelectorAll(".card").forEach(card => {
-  card.addEventListener("click", () => {
-    const cardData = {
-      id: card.dataset.id,
-      name: card.dataset.name,
-      img: card.dataset.img
-    };
+// Convert filename → readable name
+function formatName(filename) {
+  let name = filename.replace(".png", "");
+  name = name.replace("BTD6_", "");
+  name = name.replace(/^\d+-/, ""); // remove number prefix
+  name = name.replace(/([A-Z])/g, " $1"); // split CamelCase
+  name = name.replace(/Monkey Sub/, "Monkey Submarine");
+  name = name.replace(/Monkey Buccaneer/, "Monkey Pirate");
+  return name.trim();
+}
 
-    // Find first empty slot
-    const emptyIndex = loadout.findIndex(x => x === null);
+// Load images.json and generate cards
+fetch("images.json")
+  .then(res => res.json())
+  .then(files => {
+    const container = document.getElementById("cards-container");
 
-    if (emptyIndex === -1) {
-      alert("Loadout full. Remove a card first.");
-      return;
-    }
+    files.forEach(file => {
+      const imgPath = "images/" + file;
+      const name = formatName(file);
 
-    loadout[emptyIndex] = cardData;
-    localStorage.setItem("loadout", JSON.stringify(loadout));
-    renderLoadout();
+      const card = document.createElement("div");
+      card.classList.add("card");
+      card.dataset.id = name.toLowerCase().replace(/ /g, "-");
+      card.dataset.name = name;
+      card.dataset.img = imgPath;
+
+      card.innerHTML = `
+        <img src="${imgPath}">
+        <h2>${name}</h2>
+        <p>${name} card</p>
+      `;
+
+      // Add to loadout on click
+      card.addEventListener("click", () => {
+        const cardData = {
+          id: card.dataset.id,
+          name: card.dataset.name,
+          img: card.dataset.img
+        };
+
+        const emptyIndex = loadout.findIndex(x => x === null);
+
+        if (emptyIndex === -1) {
+          alert("Loadout full. Remove a card first.");
+          return;
+        }
+
+        loadout[emptyIndex] = cardData;
+        localStorage.setItem("loadout", JSON.stringify(loadout));
+        renderLoadout();
+      });
+
+      container.appendChild(card);
+    });
   });
-});
 
 // Remove card from slot
 document.querySelectorAll(".slot").forEach(slot => {
