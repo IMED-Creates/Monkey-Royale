@@ -1,11 +1,11 @@
 console.log("Menu loaded successfully");
 
 document.getElementById("play-btn").addEventListener("click", () => {
-  alert("Play button clicked — game screen coming next");
+  alert("Play screen coming soon");
 });
 
 document.getElementById("cards-btn").addEventListener("click", () => {
-  alert("Cards menu coming soon");
+  window.location.href = "cards.html";
 });
 
 document.getElementById("shop-btn").addEventListener("click", () => {
