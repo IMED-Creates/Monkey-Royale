@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Play – Monkey Royale</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="play.css">
+</head>
+<body>
+  <div class="top-bar">
+    <button id="back-btn">← Back</button>
+    <h1>Monkey Royale – Battle</h1>
+  </div>
+
+  <div class="hud">
+    <div class="banana-bar">
+      <span>Bananas: </span><span id="banana-count">0</span>
+    </div>
+    <div class="base-health">
+      <span>Your Base: </span><span id="player-base-hp">100</span>
+      <span> | Enemy Base: </span><span id="enemy-base-hp">100</span>
+    </div>
+  </div>
+
+  <div class="arena">
+    <!-- Left lane (top) -->
+    <div class="lane lane-top">
+      <div class="tower player-tower" data-side="player" data-lane="top">🏰</div>
+      <div class="lane-field" data-lane="top"></div>
+      <div class="tower enemy-tower" data-side="enemy" data-lane="top">🏰</div>
+    </div>
+
+    <!-- Right lane (bottom) -->
+    <div class="lane lane-bottom">
+      <div class="tower player-tower" data-side="player" data-lane="bottom">🏰</div>
+      <div class="lane-field" data-lane="bottom"></div>
+      <div class="tower enemy-tower" data-side="enemy" data-lane="bottom">🏰</div>
+    </div>
+  </div>
+
+  <div class="hand-container">
+    <h2>Your Hand</h2>
+    <div id="hand" class="hand"></div>
+  </div>
+
+  <div id="message" class="message hidden"></div>
+
+  <script src="play.js"></script>
+</body>
+</html>
