@@ -4,7 +4,7 @@ document.getElementById("back-btn").addEventListener("click", () => {
 });
 
 // Loadout array (8 slots)
-let loadout = JSON.parse(localStorage.getItem("loadout")) || [null, null, null, null, null, null, null, null];
+let loadout = JSON.parse(localStorage.getItem("loadout")) || Array(8).fill(null);
 
 // Render loadout on page load
 function renderLoadout() {
@@ -14,6 +14,10 @@ function renderLoadout() {
     if (loadout[index]) {
       const img = document.createElement("img");
       img.src = loadout[index].img;
+      img.alt = loadout[index].name;
+      img.onerror = () => {
+        img.src = "images/fallback.png"; // optional fallback image
+      };
       slot.appendChild(img);
     }
   });
@@ -26,7 +30,7 @@ function formatName(filename) {
   let name = filename.replace(".png", "");
   name = name.replace("BTD6_", "");
   name = name.replace(/^\d+-/, ""); // remove number prefix
-  name = name.replace(/([A-Z])/g, " $1"); // split CamelCase
+  name = name.replace(/([a-z])([A-Z])/g, "$1 $2"); // split CamelCase
   name = name.replace(/Monkey Sub/, "Monkey Submarine");
   name = name.replace(/Monkey Buccaneer/, "Monkey Pirate");
   return name.trim();
@@ -37,6 +41,7 @@ fetch("images.json")
   .then(res => res.json())
   .then(files => {
     const container = document.getElementById("cards-container");
+    if (!container) return;
 
     files.forEach(file => {
       const imgPath = "images/" + file;
@@ -49,7 +54,7 @@ fetch("images.json")
       card.dataset.img = imgPath;
 
       card.innerHTML = `
-        <img src="${imgPath}">
+        <img src="${imgPath}" alt="${name}" onerror="this.src='images/fallback.png'">
         <h2>${name}</h2>
         <p>${name} card</p>
       `;
@@ -76,12 +81,14 @@ fetch("images.json")
 
       container.appendChild(card);
     });
+  })
+  .catch(err => {
+    console.error("Failed to load images.json:", err);
   });
 
 // Remove card from slot
-document.querySelectorAll(".slot").forEach(slot => {
+document.querySelectorAll(".slot").forEach((slot, index) => {
   slot.addEventListener("click", () => {
-    const index = slot.dataset.slot;
     loadout[index] = null;
     localStorage.setItem("loadout", JSON.stringify(loadout));
     renderLoadout();
