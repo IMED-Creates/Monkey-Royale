@@ -115,9 +115,20 @@ function renderHand() {
     return;
   }
 
-  loadout.forEach((filename, index) => {
+  loadout.forEach((item) => {
+    // FIX: support both strings and objects
+    const filename = typeof item === "string"
+      ? item
+      : item.filename || item.name || item.src || null;
+
+    if (!filename) {
+      console.warn("Invalid loadout item:", item);
+      return;
+    }
+
     const card = document.createElement("div");
     card.className = "card";
+
     const img = document.createElement("img");
     img.src = `images/${filename}`;
     img.alt = filename;
