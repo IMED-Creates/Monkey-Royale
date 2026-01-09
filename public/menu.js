@@ -1,7 +1,7 @@
 console.log("Menu loaded successfully");
 
 document.getElementById("play-btn").addEventListener("click", () => {
-  alert("Play screen coming soon");
+  window.location.href = "play.html";
 });
 
 document.getElementById("cards-btn").addEventListener("click", () => {
