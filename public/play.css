@@ -1,218 +1,248 @@
+/* Reset */
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
 }
 
 body {
-  background: #0b1220;
-  color: #f9fafb;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    background: #1b1b1b;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
 }
 
-.top-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  background: #020617;
-  border-bottom: 1px solid #1f2937;
+/* Top UI */
+.top-ui {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    z-index: 20;
 }
 
-#back-btn {
-  background: #111827;
-  color: #e5e7eb;
-  border: 1px solid #374151;
-  border-radius: 6px;
-  padding: 6px 10px;
-  cursor: pointer;
+.timer {
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px black;
 }
 
-#back-btn:hover {
-  background: #1f2937;
+.crowns {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 28px;
+    color: white;
 }
 
-.hud {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 16px;
-  background: #020617;
-  border-bottom: 1px solid #1f2937;
-  font-size: 14px;
+.crown-icon {
+    width: 32px;
+    height: 32px;
 }
 
-.banana-bar span,
-.base-health span {
-  margin-right: 4px;
+/* Arena */
+#arena {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: calc(100vh - 200px);
+    background: url('images/stone_tiles.png');
+    background-size: cover;
+    overflow: hidden;
 }
 
-.arena {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 16px;
-  background: radial-gradient(circle at top, #1e293b, #020617);
+/* River */
+.river {
+    position: absolute;
+    top: 45%;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background: #4aa3ff;
+    box-shadow: inset 0 0 20px #003f7f;
 }
 
-.lane {
-  display: grid;
-  grid-template-columns: 80px 1fr 80px;
-  align-items: center;
-  background: rgba(15, 23, 42, 0.9);
-  border-radius: 12px;
-  padding: 8px;
-  border: 1px solid #1f2937;
-  position: relative;
-  overflow: hidden;
+/* Bridges */
+.bridge {
+    position: absolute;
+    top: 45%;
+    width: 20%;
+    height: 10%;
+    background: url('images/bridge.png');
+    background-size: cover;
+    z-index: 5;
 }
 
-.lane-top {
-  border-color: #22c55e;
+.left-bridge {
+    left: 15%;
 }
 
-.lane-bottom {
-  border-color: #3b82f6;
+.right-bridge {
+    right: 15%;
 }
 
+/* Towers */
 .tower {
-  width: 64px;
-  height: 64px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  background: #111827;
-  border: 2px solid #4b5563;
+    position: absolute;
+    width: 90px;
+    height: 120px;
+    background: url('images/tower.png');
+    background-size: cover;
+    z-index: 10;
 }
 
-.player-tower {
-  justify-self: flex-start;
+.enemy-tower.left {
+    top: 5%;
+    left: 20%;
 }
 
-.enemy-tower {
-  justify-self: flex-end;
+.enemy-tower.right {
+    top: 5%;
+    right: 20%;
 }
 
-.lane-field {
-  position: relative;
-  height: 80px;
-  margin: 0 8px;
-  background: linear-gradient(90deg, rgba(15, 118, 110, 0.2), rgba(30, 64, 175, 0.2));
-  border-radius: 8px;
-  overflow: hidden;
+.enemy-king {
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 150px;
+    background: url('images/king_tower.png');
+    background-size: cover;
 }
 
-/* Units */
-
-.unit {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  color: #f9fafb;
-  border: 2px solid #e5e7eb;
+.player-tower.left {
+    bottom: 5%;
+    left: 20%;
 }
 
-.unit.player {
-  background: #22c55e;
+.player-tower.right {
+    bottom: 5%;
+    right: 20%;
 }
 
-.unit.enemy {
-  background: #ef4444;
+.player-king {
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 150px;
+    background: url('images/king_tower.png');
+    background-size: cover;
 }
 
-/* Hand */
-
-.hand-container {
-  padding: 12px 16px 16px;
-  background: #020617;
-  border-top: 1px solid #1f2937;
+/* Unit Layer */
+#unit-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 15;
 }
 
-.hand-container h2 {
-  font-size: 14px;
-  margin-bottom: 8px;
-  color: #e5e7eb;
+/* Drag Preview */
+#placement-circle {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 3px solid rgba(0, 200, 255, 0.7);
+    border-radius: 50%;
+    pointer-events: none;
+    display: none;
+    z-index: 30;
 }
 
-.hand {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
+#ghost-unit {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    opacity: 0.6;
+    pointer-events: none;
+    display: none;
+    z-index: 31;
+}
+
+/* Bottom UI */
+.bottom-ui {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 160px;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    z-index: 20;
+}
+
+/* Elixir Bar */
+.elixir-bar {
+    position: relative;
+    width: 60%;
+    height: 20px;
+    background: #3b3b3b;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+#elixir-fill {
+    height: 100%;
+    width: 40%;
+    background: linear-gradient(to right, #7b00ff, #c200ff);
+    transition: width 0.2s;
+}
+
+#elixir-count {
+    position: absolute;
+    top: -28px;
+    right: -40px;
+    font-size: 28px;
+    color: white;
+    text-shadow: 2px 2px 4px black;
+}
+
+/* Card Hand */
+#card-hand {
+    display: flex;
+    gap: 12px;
 }
 
 .card {
-  min-width: 80px;
-  max-width: 80px;
-  background: #111827;
-  border-radius: 10px;
-  border: 1px solid #374151;
-  padding: 4px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  transition: transform 0.1s ease, box-shadow 0.1s ease, border-color 0.1s ease;
+    width: 90px;
+    height: 120px;
+    background: #222;
+    border-radius: 12px;
+    border: 3px solid #555;
+    overflow: hidden;
+    position: relative;
+    cursor: grab;
+    transition: transform 0.1s;
+}
+
+.card:active {
+    cursor: grabbing;
+    transform: scale(1.05);
 }
 
 .card img {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-  border-radius: 6px;
-  margin-bottom: 4px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.card span {
-  font-size: 11px;
-  text-align: center;
-  color: #e5e7eb;
-}
-
-.card .cost {
-  font-size: 10px;
-  color: #facc15;
-  margin-top: 2px;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-  border-color: #facc15;
-}
-
-.card.disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-  border-color: #374151;
-}
-
-/* Message */
-
-.message {
-  position: fixed;
-  left: 50%;
-  bottom: 16px;
-  transform: translateX(-50%);
-  background: rgba(15, 23, 42, 0.95);
-  border-radius: 999px;
-  padding: 8px 16px;
-  border: 1px solid #4b5563;
-  font-size: 13px;
-  color: #e5e7eb;
-}
-
-.hidden {
-  display: none;
+.card-cost {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 4px 6px;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
 }
