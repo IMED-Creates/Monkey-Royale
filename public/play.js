@@ -535,6 +535,49 @@ function findNearestTarget(unit) {
 
 // ---- Move unit toward target ----
 function moveUnitToward(unit, target, dt) {
+  const rect = getArenaRect();
+  const riverY = rect.height * 0.5;
+
+  // Bridge positions
+  const leftBridgeX = rect.width * 0.25;
+  const rightBridgeX = rect.width * 0.75;
+
+  // If unit and target are on different sides, force bridge crossing
+  const unitOnPlayerSide = unit.y > riverY;
+  const targetOnPlayerSide = target.y > riverY;
+
+  if (unitOnPlayerSide !== targetOnPlayerSide) {
+    // Pick nearest bridge
+    const distLeft = Math.abs(unit.x - leftBridgeX);
+    const distRight = Math.abs(unit.x - rightBridgeX);
+    const bridgeX = distLeft < distRight ? leftBridgeX : rightBridgeX;
+
+    // Move to bridge center
+    const bridgeTarget = { x: bridgeX, y: riverY };
+
+    const dx = bridgeTarget.x - unit.x;
+    const dy = bridgeTarget.y - unit.y;
+    const len = Math.sqrt(dx * dx + dy * dy);
+
+    if (len > 1) {
+      unit.x += (dx / len) * unit.moveSpeed * dt;
+      unit.y += (dy / len) * unit.moveSpeed * dt;
+      positionUnitEl(unit);
+      return;
+    }
+  }
+
+  // Normal movement toward target
+  const dx = target.x - unit.x;
+  const dy = target.y - unit.y;
+  const len = Math.sqrt(dx * dx + dy * dy);
+
+  if (len < 1) return;
+
+  unit.x += (dx / len) * unit.moveSpeed * dt;
+  unit.y += (dy / len) * unit.moveSpeed * dt;
+  positionUnitEl(unit);
+}
   if (unit.def.speed <= 0) return; // stationary units like tack shooter
 
   const dx = target.x - unit.x;
