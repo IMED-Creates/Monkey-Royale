@@ -51,9 +51,13 @@ body {
     transform: translateX(-50%);
     width: 100vw;
     height: calc(100vh - 200px);
-    background: url('images/stone_tiles.png');
-    background-size: cover;
-    overflow: hidden;
+    background: repeating-linear-gradient(
+        45deg,
+        #6d6d6d,
+        #6d6d6d 20px,
+        #7a7a7a 20px,
+        #7a7a7a 40px
+    );
 }
 
 /* River */
@@ -63,7 +67,7 @@ body {
     left: 0;
     width: 100%;
     height: 10%;
-    background: #4aa3ff;
+    background: linear-gradient(to bottom, #4aa3ff, #1e6fd8);
     box-shadow: inset 0 0 20px #003f7f;
 }
 
@@ -79,10 +83,26 @@ body {
 }
 
 .left-bridge {
+    background: repeating-linear-gradient(
+    90deg,
+    #8b5a2b,
+    #8b5a2b 15px,
+    #7a4e24 15px,
+    #7a4e24 30px
+);
+border: 3px solid #5a3a1a;
     left: 15%;
 }
 
 .right-bridge {
+    background: repeating-linear-gradient(
+    90deg,
+    #8b5a2b,
+    #8b5a2b 15px,
+    #7a4e24 15px,
+    #7a4e24 30px
+);
+border: 3px solid #5a3a1a;
     right: 15%;
 }
 
@@ -97,11 +117,51 @@ body {
 }
 
 .enemy-tower.left {
+    .princess-tower {
+    position: absolute;
+    width: 90px;
+    height: 120px;
+    background: linear-gradient(to bottom, #cfcfcf, #9d9d9d);
+    border: 4px solid #555;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    z-index: 10;
+}
+
+/* Crown decoration */
+.princess-tower::after {
+    content: "👑";
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+}
     top: 5%;
     left: 20%;
 }
 
 .enemy-tower.right {
+    .princess-tower {
+    position: absolute;
+    width: 90px;
+    height: 120px;
+    background: linear-gradient(to bottom, #cfcfcf, #9d9d9d);
+    border: 4px solid #555;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    z-index: 10;
+}
+
+/* Crown decoration */
+.princess-tower::after {
+    content: "👑";
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+}
     top: 5%;
     right: 20%;
 }
@@ -112,16 +172,58 @@ body {
     transform: translateX(-50%);
     width: 110px;
     height: 150px;
-    background: url('images/king_tower.png');
+    background: linear-gradient(to bottom, #d1d1d1, #9c9c9c);
+border: 5px solid #4a4a4a;
+border-radius: 12px;
     background-size: cover;
 }
 
 .player-tower.left {
+    .princess-tower {
+    position: absolute;
+    width: 90px;
+    height: 120px;
+    background: linear-gradient(to bottom, #cfcfcf, #9d9d9d);
+    border: 4px solid #555;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    z-index: 10;
+}
+
+/* Crown decoration */
+.princess-tower::after {
+    content: "👑";
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+}
     bottom: 5%;
     left: 20%;
 }
 
 .player-tower.right {
+    .princess-tower {
+    position: absolute;
+    width: 90px;
+    height: 120px;
+    background: linear-gradient(to bottom, #cfcfcf, #9d9d9d);
+    border: 4px solid #555;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    z-index: 10;
+}
+
+/* Crown decoration */
+.princess-tower::after {
+    content: "👑";
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 28px;
+}
     bottom: 5%;
     right: 20%;
 }
@@ -132,7 +234,9 @@ body {
     transform: translateX(-50%);
     width: 110px;
     height: 150px;
-    background: url('images/king_tower.png');
+   background: linear-gradient(to bottom, #d1d1d1, #9c9c9c);
+border: 5px solid #4a4a4a;
+border-radius: 12px;
     background-size: cover;
 }
 
