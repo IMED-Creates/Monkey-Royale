@@ -56,8 +56,205 @@ const UNIT_TYPES = {
     attackSpeed: 3.0,
     maxHp: 250,
     targetTowersFirst: false
+  },
+  "dart-monkey": {
+    name: "Dart Monkey",
+    img: "BTD6_000-DartMonkey.png",
+    speed: 60,
+    range: 150,
+    damage: 20,
+    attackSpeed: 1.0,
+    maxHp: 200
+  },
+  "tack-shooter": {
+    name: "Tack Shooter",
+    img: "BTD6_000-TackShooter.png",
+    speed: 0,
+    range: 130,
+    damage: 10,
+    attackSpeed: 3.0,
+    maxHp: 250
+  },
+  "boomerang-monkey": {
+    name: "Boomerang Monkey",
+    img: "BTD6_000-BoomerangMonkey.png",
+    speed: 65,
+    range: 140,
+    damage: 28,
+    attackSpeed: 0.9,
+    maxHp: 230
+  },
+  "bomb-shooter": {
+    name: "Bomb Shooter",
+    img: "BTD6_000-BombShooter.png",
+    speed: 0,
+    range: 160,
+    damage: 60,
+    attackSpeed: 0.7,
+    maxHp: 300
+  },
+  "ice-monkey": {
+    name: "Ice Monkey",
+    img: "BTD6_000-IceMonkey.png",
+    speed: 0,
+    range: 120,
+    damage: 5,
+    attackSpeed: 1.5,
+    maxHp: 260
+  },
+  "glue-gunner": {
+    name: "Glue Gunner",
+    img: "BTD6_000-GlueGunner.png",
+    speed: 0,
+    range: 140,
+    damage: 2,
+    attackSpeed: 2.0,
+    maxHp: 240
+  },
+  "sniper-monkey": {
+    name: "Sniper Monkey",
+    img: "BTD6_000-SniperMonkey.png",
+    speed: 0,
+    range: 9999,
+    damage: 35,
+    attackSpeed: 1.2,
+    maxHp: 180
+  },
+  "monkey-sub": {
+    name: "Monkey Sub",
+    img: "BTD6_000-MonkeySub.png",
+    speed: 0,
+    range: 170,
+    damage: 22,
+    attackSpeed: 1.0,
+    maxHp: 220
+  },
+  "monkey-buccaneer": {
+    name: "Monkey Buccaneer",
+    img: "BTD6_000-MonkeyBuccaneer.png",
+    speed: 40,
+    range: 150,
+    damage: 18,
+    attackSpeed: 1.1,
+    maxHp: 260
+  },
+  "monkey-ace": {
+    name: "Monkey Ace",
+    img: "BTD6_000-MonkeyAce.png",
+    speed: 90,
+    range: 160,
+    damage: 15,
+    attackSpeed: 1.5,
+    maxHp: 200
+  },
+  "heli-pilot": {
+    name: "Heli Pilot",
+    img: "BTD6_000-HeliPilot.png",
+    speed: 80,
+    range: 150,
+    damage: 20,
+    attackSpeed: 1.2,
+    maxHp: 260
+  },
+  "mortar-monkey": {
+    name: "Mortar Monkey",
+    img: "BTD6_000-MortarMonkey.png",
+    speed: 0,
+    range: 200,
+    damage: 70,
+    attackSpeed: 0.6,
+    maxHp: 280
+  },
+  "dartling-gunner": {
+    name: "Dartling Gunner",
+    img: "BTD6_000-DartlingGunner.png",
+    speed: 50,
+    range: 170,
+    damage: 16,
+    attackSpeed: 1.8,
+    maxHp: 240
+  },
+  "wizard-monkey": {
+    name: "Wizard Monkey",
+    img: "BTD6_000-Wizard.png",
+    speed: 55,
+    range: 160,
+    damage: 25,
+    attackSpeed: 1.0,
+    maxHp: 220
+  },
+  "super-monkey": {
+    name: "Super Monkey",
+    img: "BTD6_000-SuperMonkey.png",
+    speed: 70,
+    range: 180,
+    damage: 40,
+    attackSpeed: 2.0,
+    maxHp: 350
+  },
+  "ninja-monkey": {
+    name: "Ninja Monkey",
+    img: "BTD6_000-NinjaMonkey.png",
+    speed: 75,
+    range: 150,
+    damage: 22,
+    attackSpeed: 1.5,
+    maxHp: 200
+  },
+  "alchemist": {
+    name: "Alchemist",
+    img: "BTD6_000-Alchemist.png",
+    speed: 50,
+    range: 140,
+    damage: 18,
+    attackSpeed: 1.3,
+    maxHp: 240
+  },
+  "druid": {
+    name: "Druid",
+    img: "BTD6_000-Druid.png",
+    speed: 55,
+    range: 150,
+    damage: 20,
+    attackSpeed: 1.2,
+    maxHp: 230
+  },
+  "engineer-monkey": {
+    name: "Engineer Monkey",
+    img: "BTD6_000-EngineerMonkey.png",
+    speed: 40,
+    range: 150,
+    damage: 15,
+    attackSpeed: 1.4,
+    maxHp: 260
+  },
+  "spike-factory": {
+    name: "Spike Factory",
+    img: "BTD6_000-SpikeFactory.png",
+    speed: 0,
+    range: 110,
+    damage: 8,
+    attackSpeed: 3.0,
+    maxHp: 300
+  },
+  "banana-farm": {
+    name: "Banana Farm",
+    img: "BTD6_000-BananaFarm.png",
+    speed: 0,
+    range: 0,
+    damage: 0,
+    attackSpeed: 0,
+    maxHp: 300
+  },
+  "monkey-village": {
+    name: "Monkey Village",
+    img: "BTD6_000-MonkeyVillage.png",
+    speed: 0,
+    range: 0,
+    damage: 0,
+    attackSpeed: 0,
+    maxHp: 350
   }
-  // Add more later if you want
 };
 
 // ---- Elixir settings ----
